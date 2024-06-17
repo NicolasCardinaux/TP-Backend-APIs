@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Funko List</title>
+  <!-- Confirmar que la URL de Tailwind CSS es correcta y accesible -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .gradient-bg {
+      background: linear-gradient(90deg, #FF7E5F 0%, #FEB47B 100%);
+    }
+    .hover-underline:hover {
+      text-decoration: underline;
+    }
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+  </style>
+</head>
+
+<body class="bg-gray-100">
+  <!-- Navbar -->
+  <nav class="gradient-bg p-4 shadow-lg">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-white font-bold text-3xl">Funko List</h1>
+      <ul class="flex space-x-6">
+        <li><a href="#" class="text-white hover:text-gray-200 transition duration-300 hover-underline">Inicio</a></li>
+        <li><a href="#" class="text-white hover:text-gray-200 transition duration-300 hover-underline">Acerca de</a></li>
+        <li><a href="#" class="text-white hover:text-gray-200 transition duration-300 hover-underline">Contacto</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-4 py-10">
+    <h2 class="text-5xl font-extrabold mb-10 text-center text-gray-800">Lista de Funkos</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+      <!-- Asegúrate de que la variable 'funkos' esté definida y contenga los datos correctos -->
+      {% for funko in funkos %}
+      <div class="bg-white rounded-lg shadow-lg p-6 card-hover transition duration-300">
+        <!-- Confirma que los campos 'name', 'number', 'collection', y 'is_backlight' existen en tus objetos 'funko' -->
+        <h3 class="text-2xl font-bold mb-2 text-pink-600">{{ funko.name }}</h3>
+        <p class="text-gray-700 mb-2">Number: {{ funko.number }}</p>
+        <p class="text-gray-700 mb-2">Collection: {{ funko.collection }}</p>
+        <p class="text-gray-700">Backlight: {% if funko.is_backlight %}Yes{% else %}No{% endif %}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="gradient-bg p-4 mt-10 shadow-inner">
+    <div class="container mx-auto text-center text-white">
+      <p>© 2024 Funko List. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+
+</html>
